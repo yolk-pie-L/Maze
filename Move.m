@@ -9,8 +9,7 @@ if all(x.pos == [e-1,f])
     x.passtime=toc+x.passtime;
     set(x.tips,'string',num2str(['Your Last Time is ' num2str(roundn(x.passtime,-1)) ' s']))
     x.step=0;
-    [y,fs]=audioread('迷宫\成功.mp3');
-    sound(y,fs)
+    Success
     return
 end
 if x.step
