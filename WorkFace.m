@@ -19,7 +19,7 @@ if x.tag==0
         'Callback','global x;x.step=1.5;MazeInterface(x);','enable','off');
     x.tips=uicontrol('parent',x.f2,'style','text','Units','normalize','position',[0.35,0.93,0.3,0.03]);
     x.tim=timer('Period',0.05,'executionmode','fixeddelay',...
-        'TimerFcn','global x;set(x.tips,''string'',[''Your Current Time is '' num2str(roundn(toc+x.passtime,-1)) '' s'' ])');
+        'TimerFcn','global x;set(x.tips,''string'',[''Your Current Time is '' num2str(roundn(toc+x.passtime,-1),''%.1f'') '' s'' ])');
 elseif x.tag==-1.1 %暂停游戏时触发
     stop(x.tim)
     set(findobj(x.f2,'style','pushbutton'),'enable','on');
