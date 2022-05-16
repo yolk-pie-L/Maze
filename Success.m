@@ -1,6 +1,6 @@
 function Success %游戏成功
 clear sound;
-[y,fs]=audioread('迷宫\成功.mp3');
+[y,fs]=audioread('迷宫\成功.wav');
 sound(y,fs)
 global bgm;
 bgm='迷宫\背景音乐.mp3';
