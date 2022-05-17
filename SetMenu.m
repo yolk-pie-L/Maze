@@ -3,7 +3,7 @@ global x
 x.map=[];
 h=dialog('Name','迷宫游戏','Units','normalize','Position',[0.32 0.32 0.35 0.51],...
     'CloseRequestFcn','closereq,global x,delete(x.f2),MazeInterface;');
-imagesc(imread('迷宫/背景.jpg'))
+imagesc(imread('迷宫/背景2.jpg'))
 set(gca,'position',[0 0 1 1],'visible','off');
 uicontrol('Parent',h,'Style','Text','Units','normalize','String','游戏模式','FontSize',30,'Position',[0.3 0.72 0.4 0.2]);
 S1=uibuttongroup(h,'units','normalize',...
