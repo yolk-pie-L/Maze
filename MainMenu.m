@@ -8,7 +8,7 @@ global colour
 colour=struct( ...
     'way',40,...路的颜色
     'wall',0,...墙的颜色
-    'sae',90,...%开始和结束的颜色
+    'sae',75,...%开始和结束的颜色
     'stand',100);
 global x
 x=struct(...
