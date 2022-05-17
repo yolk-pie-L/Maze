@@ -11,8 +11,8 @@ end
 map=zeros(a,b);
 room=zeros(4,a*b);%存放室的两个顶点的坐标
 map(2:a-1,2:b-1)=1;
-map(2,1)=1;
-map(a-1,b)=1;
+map(2,1)=75;
+map(a-1,b)=75;
 room(:,1)=[1,1,a,b];
 listnum=1;
 while listnum %直到不存在可分割的室为止
