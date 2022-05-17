@@ -1,45 +1,37 @@
-function WorkFace %运行界面
+function MainMenu %主菜单
+clear global x
+clear global colour
+clear sound;
+[y, fs]=audioread('迷宫\背景音乐2.mp3');
+sound(y,fs);
+global colour
+colour=struct( ...
+    'way',9,...路的颜色
+    'wall',3,...墙的颜色
+    'sae',16,...%开始和结束的颜色
+    'stand',22); %所在的地方
 global x
-if x.tag==0
-    x.f2=figure('Name','迷宫游戏','Numbertitle','off','Menu','none','position',get(0,'ScreenSize'),...
-        'KeyPressFcn','global x;x.curprekey=get(x.f2,''currentcharacter'');','resize','off');
-    uicontrol('Parent',x.f2,'Style','pushbutton','Units','normalize','String','返回菜单','Fontsize',12,'Position',[0.01 0.8 0.1 0.08],...
-        'Callback','global x;delete([x.f1,x.f2]);MazeInterface;','enable','off');
-    uicontrol('Parent',x.f2,'Style','pushbutton','Units','normalize','String','暂停游戏','Fontsize',12,'Position',[0.01 0.7 0.1 0.08],...
-        'Callback','global x;x.tag=-1.1;x.step=1;MazeInterface(x);','tag','wait','enable','off');
-    uicontrol('Parent',x.f2,'Style','pushbutton','Units','normalize','String','重新开始','Fontsize',12,'Position',[0.01 0.6 0.1 0.08],...
-        'Callback','global x;x.tag=-1;x.passtime=0;x.step=1;x.log=[];x.pos=[2,1];MazeInterface(x);','enable','off');
-    uicontrol('Parent',x.f2,'Style','pushbutton','Units','normalize','String','更新地图','Fontsize',12,'Position',[0.01 0.5 0.1 0.08],...
-        'Callback','global x;x.tag=-2;x.passtime=0;x.step=1;x.log=[];x.pos=[2,1];MazeInterface(x);','enable','off');
-    uicontrol('Parent',x.f2,'Style','pushbutton','Units','normalize','String','求解地图','Fontsize',12,'Position',[0.01 0.4 0.1 0.08],...
-        'Callback','global x;x.step=1.3;x.tag=1;MazeInterface(x);','enable','off');
-    uicontrol('Parent',x.f2,'Style','pushbutton','Units','normalize','String','通关回放','Fontsize',12,'Position',[0.01 0.3 0.1 0.08],...
-        'Callback','global x;x.step=1.4;MazeInterface(x);','enable','off');
-    uicontrol('Parent',x.f2,'Style','pushbutton','Units','normalize','String','输出迷宫','Fontsize',12,'Position',[0.01 0.2 0.1 0.08],...
-        'Callback','global x;x.step=1.5;MazeInterface(x);','enable','off');
-    x.tips=uicontrol('parent',x.f2,'style','text','Units','normalize','position',[0.35,0.93,0.3,0.03]);
-    x.tim=timer('Period',0.05,'executionmode','fixeddelay',...
-        'TimerFcn','global x;set(x.tips,''string'',[''Your Current Time is '' num2str(roundn(toc+x.passtime,-1),''%.1f'') '' s'' ])');
-elseif x.tag==-1.1 %暂停游戏时触发
-    stop(x.tim)
-    set(findobj(x.f2,'style','pushbutton'),'enable','on');
-    set(findobj(x.f2,'string','通关回放'),'enable','off');
-    set(findobj(x.f2,'tag','wait'),'string','继续游戏',...
-        'Callback','global x;x.tag=-1.2;x.step=1;MazeInterface(x);');
-    x.passtime=toc+x.passtime;
-else %继续游戏及其他操作时触发
-    if x.tag==-1
-    clear sound
-    [y,fs]=audioread('迷宫\背景音乐.mp3');
-    sound(y,fs);
-    end
-    set(findobj(x.f2,'style','pushbutton'),'enable','off');
-    set(findobj(x.f2,'tag','wait'),'string','暂停游戏','value',0,...
-        'Callback','global x;x.tag=-1.1;x.step=1;MazeInterface(x);');
-    tic
-    if x.tag~=-2
-        start(x.tim)
-    end
-    set(x.f2,'CurrentCharacter','~');
-end
+x=struct(...
+    'f1',[],...主界面
+    'f2',[],...运行界面
+    'model',0,...游戏视角
+    'tag',0,...标记变量
+    'diffcult',0,...游戏难度
+    'passtime',0,...运行时间
+    'tim',[],...计时器
+    'tips','',...文本提示
+    'WatchArea',0,...游戏视野
+    'curprekey','',...当前按键
+    'pos',[2,1],...当前位置
+    'log',[],...操作日志
+    'map',[],...游戏地图
+    'step',0); %当前步骤
+x.f1=figure('Name','迷宫游戏','Numbertitle','off','Menu','none','units','normalize','resize','off','CloseRequestFcn','Exit');
+imagesc(imread('迷宫\背景.jpg'))
+set(gca,'position',[0 0 1 1],'visible','off');
+text(0.27,0.77,'MAZE GAME','Units','normalize','FontSize',35,'FontName','Maiandra GD','FontWeight','bold')
+uicontrol('Parent',x.f1,'Style','pushbutton','Units','normalize','String','开始游戏','FontName','幼圆','Fontsize',12,'Position',[0.38 0.4 0.3 0.1],...
+    'Callback','global x;delete(x.f1);x.step=1;MazeInterface(x);');
+uicontrol('Parent',x.f1,'Style','pushbutton','Units','normalize','String','游戏介绍','FontName','幼圆','Fontsize',12,'Position',[0.38 0.25 0.3 0.1],...
+    'Callback','global x;delete(x.f1);x.step=2;MazeInterface(x);');
 end
