@@ -15,15 +15,14 @@ for i = 1:r
                 map1(i,k)=100;
             case 4
                 map1(i,k)=25;
+            case 75
+                map1(i,k)=75;
             otherwise 
                 map1(i,k)=6;
         end
     end
 end
-map1(2,1)=colour.sae;
-map1(r-1,c)=colour.sae;
 im=imagesc(map1,[0,100]);
-%im.AlphaData=0.8;
 colormap("pink")
 set(gca,'visible','off')
 end
