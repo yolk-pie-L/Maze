@@ -34,7 +34,7 @@ while ~all(curpos==[e-1,f])
         path(num,:)=curpos;
     else
         curpos=path(num,:);
-        map(curpos(1),curpos(2))=2;
+        map(curpos(1),curpos(2))=4;
         path(num,:)=[];
         num=num-1;
         curpos=path(num,:);
