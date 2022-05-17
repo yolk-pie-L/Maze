@@ -14,7 +14,7 @@ for i = 1:r
             case 3
                 map1(i,k)=100;
             case 4
-                map1(i,k)=66;
+                map1(i,k)=25;
             otherwise 
                 map1(i,k)=6;
         end
@@ -24,6 +24,6 @@ map1(2,1)=colour.sae;
 map1(r-1,c)=colour.sae;
 im=imagesc(map1,[0,100]);
 %im.AlphaData=0.8;
-colormap("summer")
+colormap("pink")
 set(gca,'visible','off')
 end
