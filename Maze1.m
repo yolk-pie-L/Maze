@@ -9,8 +9,8 @@ else
     b=varargin{2};
 end
 map=zeros(a,b);
-map(2,1)=1;
-map(a-1,b)=1;
+map(2,1)=75;
+map(a-1,b)=75;
 p=zeros(1,4);%存放某一步可走的方向
 q=zeros(1,a*b);%存放每一步走过的方向
 i=2;j=2;
