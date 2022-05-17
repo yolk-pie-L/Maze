@@ -1,58 +1,48 @@
 function MazeInterface(varargin)
 global x ;
-if nargin<1 %Ö÷½çÃæ
+if nargin<1 %ä¸»ç•Œé¢
     MainMenu
-elseif x.step == 1 %¿ªÊ¼ÓÎÏ·
-    WorkFace %ÔËÐÐ½çÃæ
+elseif x.step == 1 %å¼€å§‹æ¸¸æˆ
+    WorkFace %è¿è¡Œç•Œé¢
     if x.tag==0||x.tag==-2
-        SetMenu  %ÉèÖÃ½çÃæ
+        SetMenu  %è®¾ç½®ç•Œé¢
     else
         x.step=1.1;
         MazeInterface(x)
     end
 elseif x.step==1.1
     if isempty(x.map)
-        MapWrite %µØÍ¼Ð´Èë
-        TimeShow %µ¹¼ÆÊ±
+        MapWrite %åœ°å›¾å†™å…¥
+        TimeShow %å€’è®¡æ—¶
     end
     x.step=1.2;
     MazeInterface(x)
 elseif x.step==1.2
     Move;
 elseif x.step==1.3
-    Solve %µØÍ¼Çó½â
+    Solve %åœ°å›¾æ±‚è§£
 elseif x.step==1.4
-    Replay   %Í¨¹Ø»Ø·Å
+    Replay   %é€šå…³å›žæ”¾
 elseif x.step==1.5
-    PrintMap %Êä³öµØÍ¼
-elseif x.step==2 %ÓÎÏ·½éÉÜ
+    PrintMap %è¾“å‡ºåœ°å›¾
+elseif x.step==2 %æ¸¸æˆä»‹ç»
     Explain
 elseif x.step==2.1
-    Maze1; %Éú³ÉËã·¨1
+    Maze1; %ç”Ÿæˆç®—æ³•1
 elseif x.step==2.2
-    Maze2; %Éú³ÉËã·¨2
+    Maze2; %ç”Ÿæˆç®—æ³•2
 elseif x.step==2.3
-    Maze3; %Éú³ÉËã·¨3
+    Maze3; %ç”Ÿæˆç®—æ³•3
 elseif x.step==2.4
-    Solve1 %Çó½âËã·¨1
+    Solve1 %æ±‚è§£ç®—æ³•1
 elseif x.step==2.5
-    Solve2 %Çó½âËã·¨2
+    Solve2 %æ±‚è§£ç®—æ³•2
+elseif x.step==2.6
+    Solve3 %æ±‚è§£ç®—æ³•3
 else
-    Exit %ÍË³öÓÎÏ·
+    Exit %é€€å‡ºæ¸¸æˆ
 end
 end
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
