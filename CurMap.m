@@ -21,7 +21,7 @@ if x.model>1
     end
     switch x.model
         case 2 %第一视角
-            map=map(up:down,left:right);
+            map=map(max(1,x.pos(1)-1):min(x.pos(1)+1,e),max(1,x.pos(2)-1):min(f,x.pos(2)+1));
         case 3 %第三视角
             map([1:up-1,down+1:e],:)=0;
             map(:,[1:left-1,right+1:f])=0;
