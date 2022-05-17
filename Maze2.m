@@ -10,8 +10,8 @@ else
 end
 map=zeros(a,b);
 wall=zeros(2,a*b);%存放未被打通过的墙壁
-map(2,1)=1;
-map(a-1,b)=1;
+map(2,1)=75;
+map(a-1,b)=75;
 i=2;j=2;
 wall(:,1)=[2,3];
 wall(:,2)=[3,2];
