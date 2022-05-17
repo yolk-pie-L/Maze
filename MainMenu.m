@@ -6,10 +6,10 @@ clear sound;
 sound(y,fs);
 global colour
 colour=struct( ...
-    'way',9,...路的颜色
-    'wall',3,...墙的颜色
-    'sae',16,...%开始和结束的颜色
-    'stand',22); %所在的地方
+    'way',40,...路的颜色
+    'wall',0,...墙的颜色
+    'sae',90,...%开始和结束的颜色
+    'stand',100);
 global x
 x=struct(...
     'f1',[],...主界面
