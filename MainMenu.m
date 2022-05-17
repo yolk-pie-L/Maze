@@ -1,13 +1,15 @@
 function MainMenu %主菜单
 clear global x
-clear sound
 clear global colour
+clear sound;
+[y, fs]=audioread('迷宫\背景音乐2.mp3');
+sound(y,fs);
 global colour
 colour=struct( ...
     'way',9,...路的颜色
     'wall',3,...墙的颜色
     'sae',16,...%开始和结束的颜色
-    'stand',22);
+    'stand',22); %所在的地方
 global x
 x=struct(...
     'f1',[],...主界面
@@ -28,8 +30,8 @@ x.f1=figure('Name','迷宫游戏','Numbertitle','off','Menu','none','units','nor
 imagesc(imread('迷宫\背景.jpg'))
 set(gca,'position',[0 0 1 1],'visible','off');
 text(0.27,0.77,'MAZE GAME','Units','normalize','FontSize',35,'FontName','Maiandra GD','FontWeight','bold')
-uicontrol('Parent',x.f1,'Style','pushbutton','Units','normalize','String','开始游戏','Fontsize',12,'Position',[0.38 0.4 0.3 0.1],...
+uicontrol('Parent',x.f1,'Style','pushbutton','Units','normalize','String','开始游戏','FontName','幼圆','Fontsize',12,'Position',[0.38 0.4 0.3 0.1],...
     'Callback','global x;delete(x.f1);x.step=1;MazeInterface(x);');
-uicontrol('Parent',x.f1,'Style','pushbutton','Units','normalize','String','游戏介绍','Fontsize',12,'Position',[0.38 0.25 0.3 0.1],...
+uicontrol('Parent',x.f1,'Style','pushbutton','Units','normalize','String','游戏介绍','FontName','幼圆','Fontsize',12,'Position',[0.38 0.25 0.3 0.1],...
     'Callback','global x;delete(x.f1);x.step=2;MazeInterface(x);');
 end
