@@ -6,6 +6,9 @@ if isempty(x.map)
 else
     map=x.map;
 end
+[a,b]=size(map);
+map(2,1)=1;
+map(a-1,b)=1;
 orimap=map;
 h=zeros(3);
 h([2,4,6,8])=1;
